@@ -31,7 +31,7 @@ class AddingParticles(Sofa.Core.Controller):
 	def addFallingParticle(self, node):
 		iteration_loc = self.iteration
 		newParticle = node.addChild("ParticleToCollideWith-"+str(iteration_loc))
-		newParticle.addObject("EulerImplicitSolver")
+		newParticle.addObject("EulerImplicitIntegrationScheme")
 		newParticle.addObject("SparseLDLSolver", name="linear_solver", template="CompressedRowSparseMatrixMat3x3d")
 		newParticle.addObject("MechanicalObject", template="Rigid3", name="myParticle", position=[self.generatXPos(), 50, 0,  0,0,0,1], showObject=True)
 		newParticle.addObject("UniformMass", totalMass=0.002)
@@ -97,7 +97,7 @@ def createScene(rootNode):
 	
 	mechanicalModel = rootNode.addChild("Finger")
 	
-	mechanicalModel.addObject("EulerImplicitSolver", name="integration_scheme")
+	mechanicalModel.addObject("EulerImplicitIntegrationScheme", name="integration_scheme")
 	mechanicalModel.addObject("SparseLDLSolver", name="linear_solver", template="CompressedRowSparseMatrixMat3x3d")
 	
 	mechanicalModel.addObject("MeshTopology", name="topology_container", src="@../mesh_loader_coarse" )

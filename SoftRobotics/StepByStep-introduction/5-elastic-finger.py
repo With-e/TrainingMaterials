@@ -19,7 +19,7 @@ def createScene(rootNode):
 	# Mechanical representation of the finger object
 	mechanicalModel = rootNode.addChild("Finger")
 	
-	mechanicalModel.addObject("EulerImplicitSolver", name="integration_scheme")
+	mechanicalModel.addObject("EulerImplicitIntegrationScheme", name="integration_scheme")
 	mechanicalModel.addObject("SparseLDLSolver", name="linear_solver", template="CompressedRowSparseMatrixMat3x3d")
 	
     # MeshTopology is a static topology container, i.e. it does not support topology changes (unlike TetrahedronSetTopologyContainer)

@@ -12,7 +12,7 @@ def createScene(rootNode):
 	particleNode = rootNode.addChild("Particle", bbox=[0,0,0,1,1,1])   # bbox is only needed here to define a non-zero simulation space since the scene is a single rigid frame
 	
     # Adding an integration scheme (ODE solver): here the backward Euler
-	particleNode.addObject("EulerImplicitSolver", name="integration_scheme")
+	particleNode.addObject("EulerImplicitIntegrationScheme", name="integration_scheme")
 	# Adding a linear solver to solve the numerical system: here the direct solver using the LDLt decomposition
 	particleNode.addObject("SparseLDLSolver", name="linear_solver")
 	

@@ -23,7 +23,7 @@ def createScene(rootNode):
 	
 	mechanicalModel = rootNode.addChild("Finger")
 	
-	mechanicalModel.addObject("EulerImplicitSolver", name="integration_scheme")
+	mechanicalModel.addObject("EulerImplicitIntegrationScheme", name="integration_scheme")
 	mechanicalModel.addObject("SparseLDLSolver", name="linear_solver", template="CompressedRowSparseMatrixMat3x3d")
 	
 	mechanicalModel.addObject("MeshTopology", name="topology_container", src="@../mesh_loader_coarse" )

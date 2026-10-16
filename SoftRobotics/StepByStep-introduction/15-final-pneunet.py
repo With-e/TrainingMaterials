@@ -5,7 +5,7 @@ def createScene(rootNode):
     rootNode.gravity = [ 0., -9.81 ,0.]
 
     rootNode.addObject('RequiredPlugin', pluginName=['Sofa.Component.StateContainer','Sofa.Component.Mass','Sofa.Component.MechanicalLoad',
-                                                'Sofa.Component.LinearSolver.Iterative','Sofa.Component.ODESolver.Backward',
+                                                'Sofa.Component.LinearSolver.Iterative','Sofa.Component.IntegrationScheme.Backward',
                                                 'Sofa.Component.IO.Mesh','Sofa.Component.Topology.Container.Dynamic',
                                                 'Sofa.Component.SolidMechanics.FEM.Elastic','Sofa.Component.Topology.Container.Constant',
                                                 'Sofa.Component.Visual','Sofa.Component.Mapping.Linear','Sofa.GL.Component.Rendering3D',
@@ -28,7 +28,7 @@ def createScene(rootNode):
     # FEM Model                              #
     ##########################################
     model = rootNode.addChild('model')
-    model.addObject('EulerImplicitSolver', rayleighStiffness=0.2, rayleighMass=0.2)  ##--> Our integration scheme
+    model.addObject('EulerImplicitIntegrationScheme', rayleighStiffness=0.2, rayleighMass=0.2)  ##--> Our integration scheme
     model.addObject('SparseLDLSolver', template="CompressedRowSparseMatrixd")        ##--> Linear solver used to inverse A (LDL factorization)
 
     model.addObject('MeshVTKLoader', name='loader', filename='../PneuNets.vtk')      ##--> Load our topology

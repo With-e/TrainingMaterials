@@ -40,7 +40,7 @@ def createScene(rootNode):
 	
 	mechanicalModel = rootNode.addChild("Finger")
 	
-	mechanicalModel.addObject("EulerImplicitSolver", name="integration_scheme")
+	mechanicalModel.addObject("EulerImplicitIntegrationScheme", name="integration_scheme")
 	mechanicalModel.addObject("SparseLDLSolver", name="linear_solver", template="CompressedRowSparseMatrixd") # Linear solver used to inverse A (LDL factorization)
 	
 	mechanicalModel.addObject("MeshTopology", name="topology_container", src="@../mesh_loader_coarse" )
@@ -71,7 +71,7 @@ def createScene(rootNode):
 	
     
 	fallingParticle = rootNode.addChild("ParticleToCollideWith")
-	fallingParticle.addObject("EulerImplicitSolver", name="integration_scheme")
+	fallingParticle.addObject("EulerImplicitIntegrationScheme", name="integration_scheme")
 	fallingParticle.addObject("CGLinearSolver", name="iterative_linear_solver", iterations=200, tolerance=scene_unit(1e-8, mm**2), threshold=scene_unit(1e-8, mm**2))
 	fallingParticle.addObject("MechanicalObject", template="Vec3", name="particle_DOF", position=[-170, 50, 0], showObject=True)
 	fallingParticle.addObject("UniformMass", name="nodal_mass", totalMass=scene_unit(0.002, kg))

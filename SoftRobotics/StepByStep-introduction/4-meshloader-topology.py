@@ -15,7 +15,7 @@ def createScene(rootNode):
 
 	particleNode = rootNode.addChild("Particle") # bbox is no longer needed since we do load a volumetric mesh
 	
-	particleNode.addObject("EulerImplicitSolver", name="integration_scheme")
+	particleNode.addObject("EulerImplicitIntegrationScheme", name="integration_scheme")
 	particleNode.addObject("SparseLDLSolver", name="linear_solver", template="CompressedRowSparseMatrixMat3x3d")
 	
     # Topology container (SetTopologyContainer depicts dynamic topology containers)

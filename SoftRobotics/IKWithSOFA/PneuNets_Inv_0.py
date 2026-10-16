@@ -15,7 +15,7 @@ def createScene(rootNode):
     # Goal                                   #
     ##########################################
     goal = rootNode.addChild('goal')                                                 ##--> Define a target position (goal) to reach wih the EEF
-    goal.addObject('EulerImplicitSolver', firstOrder=True)
+    goal.addObject('EulerImplicitIntegrationScheme', firstOrder=True)
     goal.addObject('CGLinearSolver', iterations=100, tolerance=1e-5, threshold=1e-5)
     goal.addObject('MechanicalObject', name='goalMO', position=[[-195, 15, 0]])      ##--> Define a starting position
     goal.addObject('SphereCollisionModel', radius=5, group=3)
@@ -25,7 +25,7 @@ def createScene(rootNode):
     # FEM Model                              #
     ##########################################
     model = rootNode.addChild('model')
-    model.addObject('EulerImplicitSolver', rayleighStiffness=0.2, rayleighMass=0.2)
+    model.addObject('EulerImplicitIntegrationScheme', rayleighStiffness=0.2, rayleighMass=0.2)
     model.addObject('SparseLDLSolver')
 
     model.addObject('MeshVTKLoader', name='loader', filename='../PneuNets_remeshed.vtk')
